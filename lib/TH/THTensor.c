@@ -19,6 +19,9 @@
 #include "generic/THTensorMath.c"
 #include "THGenerateAllTypes.h"
 
+#include "generic/THTensorMathDispatch.c"
+#include "THGenerateAllTypes.h"
+
 #include "generic/THTensorConv.c"
 #include "THGenerateAllTypes.h"
 
