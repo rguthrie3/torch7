@@ -7,11 +7,21 @@
 #define CPUID_AVX_BIT  0x10000000 // Bit 28 of ECX for EAX=0x1
 #define CPUID_SSE_BIT  0x2000000  // bit 25 of EDX for EAX=0x1
 
-
+// Helper macros for initialization
 #define FUNCTION_IMPL(NAME, EXT) \
     { .function=(void *)NAME,    \
       .supportedSimdExt=EXT      \
     }
+
+#define INIT_DISPATCH_PTR(OP)    \
+  do {                           \
+    for (int i = 0; i < sizeof(THTensor_(dispatchTbl ## OP)) / sizeof(FunctionDescription); ++i) { \
+      THTensor_(dispatchPtr ## OP) = THTensor_(dispatchTbl ## OP)[i].function;                     \
+      if (THTensor_(dispatchTbl ## OP)[i].supportedSimdExt & hostSimdExts) {                       \
+        break;                                                                                     \
+      }                                                                                            \
+    }                                                                                              \
+  } while(0)
 
 
 typedef struct FunctionDescription
@@ -23,10 +33,10 @@ typedef struct FunctionDescription
 
 enum SIMDExtensions
 {
-  SIMDExtension_AVX2 = 0x1,
-  SIMDExtension_AVX  = 0x2,
-  SIMDExtension_SSE  = 0x4,
-  DEFAULT            = 0x0
+  SIMDExtension_AVX2    = 0x1,
+  SIMDExtension_AVX     = 0x2,
+  SIMDExtension_SSE     = 0x4,
+  SIMDExtension_DEFAULT = 0x0
 };
 
 
