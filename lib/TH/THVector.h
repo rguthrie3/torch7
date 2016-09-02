@@ -381,7 +381,7 @@ static TH_INLINE void THDoubleVector_add_SSE(double *y, const double *x, const d
 }
 
 
-#define THDoubleVector_diff(z, x, y, n) {       \
+#define THDOUBLEVECTOR_DIFF(z, x, y, n) {       \
     long i;                                     \
     for (i=0; i<=((n)-8); i+=8) {               \
       __m128d XMM0 = _mm_loadu_pd((x)+i  );     \
@@ -408,7 +408,7 @@ static TH_INLINE void THDoubleVector_add_SSE(double *y, const double *x, const d
   }
 
 static TH_INLINE void THDoubleVector_diff_SSE(double *z, const double *x, const double *y, const long n) {
-  THDOUBLE_VECTOR_DIFF(z, x, y, n);
+  THDOUBLEVECTOR_DIFF(z, x, y, n);
 }
 
 
@@ -434,7 +434,7 @@ static TH_INLINE void THDoubleVector_scale_SSE(double *y, const double c, const 
 }
 
 
-#define THDoubleVector_mul(y, x, n) {           \
+#define THDOUBLEVECTOR_MUL(y, x, n) {           \
     long i;                                     \
     for (i=0; i<=((n)-8); i+=8) {               \
       __m128d XMM0 = _mm_loadu_pd((x)+i  );     \
@@ -533,7 +533,7 @@ static TH_INLINE void THFloatVector_add_SSE(double *y, const double *x, const do
   }
 
 static TH_INLINE void THFloatVector_diff_SSE(double *z, const double *x, const double *y, const long n) {
-  THFLOAT_VECTOR_DIFF(z, x, y, n);
+  THFLOATVECTOR_DIFF(z, x, y, n);
 }
 
 

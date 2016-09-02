@@ -3,6 +3,7 @@
 #else
 
 #include "simd/simd.h"
+#include <assert.h>
 
 /* For now there are only SIMD implementations for FLOAT and DOUBLE.
  * Hopefully in the future this can be made totally generic (e.g, there are SIMD implementations
