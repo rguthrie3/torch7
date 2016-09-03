@@ -1,7 +1,7 @@
 #include "THAtomic.h"
 #include "THTensor.h"
 
-#include "THVector.h"
+#include "THVectorImpls.h"
 #include "generic/THVectorDispatch.c"
 #include "THGenerateAllTypes.h"
 
