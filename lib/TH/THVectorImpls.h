@@ -335,6 +335,9 @@ static inline void THDoubleVector_mul(double *y, const double *x, const long n)
     y[i] *= x[i];
 }
 
+#include "generic/THVector.c"
+#include "THGenerateIntTypes.h"
+
 #else
 
 #include <x86intrin.h>
@@ -589,11 +592,11 @@ static TH_INLINE void THFloatVector_mul_SSE(float *y, const float *x, const long
   THFLOATVECTOR_MUL(y, x, n);
 }
 
-#endif
-
 /* Generate default implementations which do not use SIMD */
 #include "generic/THVector.c"
 #include "THGenerateAllTypes.h"
+
+#endif
 
 
 #endif
