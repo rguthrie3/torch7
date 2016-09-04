@@ -22,7 +22,7 @@ static FunctionDescription THVector_(fill_DISPATCHTABLE)[] = {
 #endif
   FUNCTION_IMPL(THVector_(fill_SCALAR), SIMDExtension_SCALAR)
 };
-static TH_INLINE void THVector_(fill)(real *x, const real c, const long n) {
+void THVector_(fill)(real *x, const real c, const long n) {
   assert(THVector_(fill_DISPATCHPTR));
   THVector_(fill_DISPATCHPTR)(x, c, n);
 }
@@ -35,7 +35,7 @@ static FunctionDescription THVector_(add_DISPATCHTABLE)[] = {
 #endif
   FUNCTION_IMPL(THVector_(add_SCALAR), SIMDExtension_SCALAR)
 };
-static TH_INLINE void THVector_(add)(real *y, const real *x, const real c, const long n) {
+void THVector_(add)(real *y, const real *x, const real c, const long n) {
   assert(THVector_(add_DISPATCHPTR));
   THVector_(add_DISPATCHPTR)(y, x, c, n);
 }
@@ -48,7 +48,7 @@ static FunctionDescription THVector_(diff_DISPATCHTABLE)[] = {
 #endif
   FUNCTION_IMPL(THVector_(diff_SCALAR), SIMDExtension_SCALAR)
 };
-static TH_INLINE void THVector_(diff)(real *z, const real *x, const real *y, const long n) {
+void THVector_(diff)(real *z, const real *x, const real *y, const long n) {
   assert(THVector_(diff_DISPATCHPTR));
   THVector_(diff_DISPATCHPTR)(z, x, y, n);
 }
@@ -61,7 +61,7 @@ static FunctionDescription THVector_(scale_DISPATCHTABLE)[] = {
 #endif
   FUNCTION_IMPL(THVector_(scale_SCALAR), SIMDExtension_SCALAR)
 };
-static TH_INLINE void THVector_(scale)(real *y, const real c, const long n) {
+TH_API void THVector_(scale)(real *y, const real c, const long n) {
   assert(THVector_(scale_DISPATCHPTR));
   THVector_(scale_DISPATCHPTR)(y, c, n);
 }
@@ -74,7 +74,7 @@ static FunctionDescription THVector_(mul_DISPATCHTABLE)[] = {
 #endif
   FUNCTION_IMPL(THVector_(mul_SCALAR), SIMDExtension_SCALAR)
 };
-static TH_INLINE void THVector_(mul)(real *y, const real *x, const long n) {
+void THVector_(mul)(real *y, const real *x, const long n) {
   assert(THVector_(mul_DISPATCHPTR));
   THVector_(mul_DISPATCHPTR);
 }
